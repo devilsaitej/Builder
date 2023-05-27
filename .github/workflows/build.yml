@@ -24,6 +24,10 @@ jobs:
 
     - name: Install dependencies
       run: |
+        sudo apt-get update
+        sudo apt-get upgrade
+        sudo apt-get autoclean
+        sudo apt-get autoremove
         python -m pip install --upgrade pip
         pip install buildozer cython
         sudo apt-get install -y \
@@ -42,7 +46,6 @@ jobs:
           libavformat-dev \
           libavcodec-dev \
           zlib1g-dev \
-          libgstreamer1.0 \
           gstreamer1.0-plugins-base \
           gstreamer1.0-plugins-good \
           libffi-dev \
@@ -54,7 +57,14 @@ jobs:
         sudo apt-get install -y nodejs
 
         sudo apt-get clean
-
+    
+    - name: Fixing previous error
+      run: |
+        try:
+          sudo apt install libunwind-dev
+          sudo apt install libgstreamer1.0-dev
+        except:
+          echo "error occored so skipping it"
     - name: Build the app
       run: |
         buildozer android debug

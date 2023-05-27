@@ -58,13 +58,6 @@ jobs:
 
         sudo apt-get clean
     
-    - name: Fixing previous error
-      run: |
-        try:
-          sudo apt install libunwind-dev
-          sudo apt install libgstreamer1.0-dev
-        except:
-          echo "error occored so skipping it"
     - name: Build the app
       run: |
         buildozer android debug

@@ -26,7 +26,7 @@ jobs:
       uses: actions/setup-java@v2
       with:
         java-version: 20
-        distribution: openjdk
+        distribution: adopt
 
     - name: Install dependencies
       run: |

@@ -16,11 +16,14 @@ jobs:
 
     - name: Check out code
       uses: actions/checkout@v2
+      
+    - name: Use Node.js 16
+      uses: actions/setup-node@v2
+      with:
+        node-version: 16
 
     - name: Install dependencies
       run: |
-        npm install -g npm
-        npm install -g buildozer
         python -m pip install --upgrade pip
         pip install buildozer cython
         sudo apt-get install -y \

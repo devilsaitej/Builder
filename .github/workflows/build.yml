@@ -21,7 +21,11 @@ jobs:
       uses: actions/setup-node@v2
       with:
         node-version: 16
-
+        
+    - name: Set up Java
+      uses: actions/setup-java@v2
+      with:
+        java-version: 20
 
     - name: Install dependencies
       run: |

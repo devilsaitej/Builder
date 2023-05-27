@@ -21,6 +21,13 @@ jobs:
       uses: actions/setup-node@v2
       with:
         node-version: 16
+        
+    - name: Set up Android SDK
+      uses: android/setup-android-sdk@v1
+      with:
+        sdk-platform: "android-30"
+        ndk-version: "21.4.7075529"
+
 
     - name: Install dependencies
       run: |
@@ -56,8 +63,8 @@ jobs:
         # Install Node.js 16
         curl -fsSL https://deb.nodesource.com/setup_16.x | sudo -E bash -
         sudo apt-get install -y nodejs
-        sdkmanager "build-tools;30.0.3" "platforms;android-30" "extras;android;m2repository" "extras;google;m2repository"
-        yes | sdkmanager --licenses
+        $ANDROID_SDK_ROOT/cmdline-tools/latest/bin/sdkmanager "build-tools;30.0.3" "platforms;android-30" "extras;android;m2repository" "extras;google;m2repository"
+        yes | $ANDROID_SDK_ROOT/cmdline-tools/latest/bin/sdkmanager --licenses
         sudo apt-get clean
     
     - name: Build the app

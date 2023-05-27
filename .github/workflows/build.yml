@@ -31,6 +31,8 @@ jobs:
         
     - name: installing open jdk
       run: |
+        sudo apt-get update
+        sudo apt-get upgrade
         sudo apt-get install openjdk-8-jdk
 
     - name: Install dependencies

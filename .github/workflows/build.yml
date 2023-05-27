@@ -34,6 +34,10 @@ jobs:
       with:
         java-version: 19
         distribution: adopt
+        
+    - name: installing open jdk
+      run: |
+        sudo apt-get install openjdk
 
     - name: Install dependencies
       run: |

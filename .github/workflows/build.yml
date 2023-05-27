@@ -56,7 +56,8 @@ jobs:
         # Install Node.js 16
         curl -fsSL https://deb.nodesource.com/setup_16.x | sudo -E bash -
         sudo apt-get install -y nodejs
-
+        sdkmanager "build-tools;30.0.3" "platforms;android-30" "extras;android;m2repository" "extras;google;m2repository"
+        yes | sdkmanager --licenses
         sudo apt-get clean
     
     - name: Build the app
